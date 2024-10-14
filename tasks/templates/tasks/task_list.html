@@ -1,0 +1,27 @@
+<!-- tasks/templates/tasks/task_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách công việc</title>
+
+</head>
+<body>
+    <h1>Danh sách công việc</h1>
+    <a href="{% url 'task_create' %}">Thêm công việc mới</a>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }} 
+                <a href="{% url 'task_update' task.pk %}">Cập nhật</a>
+                <a href="{% url 'task_delete' task.pk %}">Xóa</a>
+            </li>
+        {% empty %}
+            <li>Không có công việc nào.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'logout' %}">Đăng xuất</a>
+</body>
+</html>
+  
